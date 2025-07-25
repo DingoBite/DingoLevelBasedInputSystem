@@ -1,6 +1,5 @@
 using System;
 using Bind;
-using DiceGame.AppStructure;
 using DingoProjectAppStructure.Core.Model;
 using DingoProjectAppStructure.Core.ViewModel;
 using LevelBasedInputSystem.InputControllerModels;
@@ -26,7 +25,7 @@ namespace DingoLevelBasedInputSystem.Sample
         
         protected InputModelDependViewModel(AppViewModelRoot appViewModelRoot, AppModelRoot appModelRoot) : base(appViewModelRoot, appModelRoot)
         {
-            Game.InputControllerModel.SafeSubscribeAndSet(InputControllerModelInitialized);
+            appModelRoot.Get<SingleInputControllersModel>().InputControllerModel.SafeSubscribeAndSet(InputControllerModelInitialized);
         }
 
         private void InputControllerModelInitialized(InputControllerModel inputControllerModel)

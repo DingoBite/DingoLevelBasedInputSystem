@@ -1,12 +1,21 @@
 ﻿using System;
-using DiceGame.AppStructure;
+using System.Threading.Tasks;
 using DingoProjectAppStructure.Core.AppRootCore;
 using DingoProjectAppStructure.Core.Model;
+using LevelBasedInputSystem.InputControllerModels;
 
 namespace DingoLevelBasedInputSystem.Sample
 {
     public abstract class InputModelAppStateElementBehaviour<T> : AppStateElementBehaviour where T : AppModelBase
     {
+        private AppModelRoot _appModel;
+
+        public override Task BindAsync(AppModelRoot appModel)
+        {
+            _appModel = appModel;
+            return base.BindAsync(appModel);
+        }
+        
         protected abstract void EnableModel(T model);
         protected abstract void DisableModel(T model);
 
@@ -22,7 +31,7 @@ namespace DingoLevelBasedInputSystem.Sample
                 DisableModel(model);
         }
 
-        protected override void SubscribeOnly() => Game.InputControllerModel.V.SubscribeAndSet<T>(EnableController, DisableController);
-        protected override void UnsubscribeOnly() => Game.InputControllerModel.V.UnSubscribe(EnableController, DisableController);
+        protected override void SubscribeOnly() => _appModel.Get<SingleInputControllersModel>().InputControllerModel.V.SubscribeAndSet<T>(EnableController, DisableController);
+        protected override void UnsubscribeOnly() => _appModel.Get<SingleInputControllersModel>().InputControllerModel.V.UnSubscribe(EnableController, DisableController);
     }
 }
