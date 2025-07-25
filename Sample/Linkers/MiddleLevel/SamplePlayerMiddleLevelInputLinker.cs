@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 
 namespace DingoLevelBasedInputSystem.Sample.Linkers.MiddleLevel
 {
-    public class PlayerMiddleLevelInputLinker : Core.MiddleLevelInputLinker
+    public class SamplePlayerMiddleLevelInputLinker : Core.MiddleLevelInputLinker
     {
         [SerializeField] private float _doubleClickDelta;
 
         private float _leftClickTime = -1;
         
-        private static readonly InputProviderModel BlankProviderModel = new();
+        private static readonly SampleInputProviderModel BlankProviderModel = new();
         private SingleInputControllersModel _inputControllersModel;
-        private InputProviderModel M => _inputControllersModel?.InputControllerModel.V?.Model<InputProviderModel>() ?? BlankProviderModel;
+        private SampleInputProviderModel M => _inputControllersModel?.InputControllerModel.V?.Model<SampleInputProviderModel>() ?? BlankProviderModel;
 
         public override void Link(SingleInputControllersModel inputControllersModel, MiddleLevelSourceInput middleLevelSourceInput)
         {

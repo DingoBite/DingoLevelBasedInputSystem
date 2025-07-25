@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace DingoLevelBasedInputSystem.Sample
 {
-    public class SinglePlayerInputHandler : AppStateStaticElementBehaviour
+    public class SampleSinglePlayerInputHandler : AppStateStaticElementBehaviour
     {
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private bool _autoEnableOnInit;
@@ -37,7 +37,7 @@ namespace DingoLevelBasedInputSystem.Sample
             var inputControllerModel = new InputControllerModel(new InputControllerProperties(_id));
             var singleInputControllersModel = _appModelRoot.Get<SingleInputControllersModel>();
             singleInputControllersModel.SetupInputControllerModel(inputControllerModel);
-            inputControllerModel.RegisterModel(new InputProviderModel());
+            inputControllerModel.RegisterModel(new SampleInputProviderModel());
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace DingoLevelBasedInputSystem.Sample
 {
-    public class InputProviderModel : AppModelBase
+    public class SampleInputProviderModel : AppModelBase
     {
         public readonly Bind<(Vector2, InputActionPhase)> MovementInput = new();
         public readonly Bind<Vector2> MouseScreenPosition = new();
