@@ -55,7 +55,7 @@ namespace LevelBasedInputSystem.InputControllerModels
 
         public void EnableModel<T>() where T : AppModelBase
         {
-            if (_disabled.Remove(typeof(T), out var model) && model != null)
+            if ((_disabled.Remove(typeof(T), out var model) || _models.TryGetValue(typeof(T), out model)) && model != null)
             {
                 _enabled[typeof(T)] = model;
                 ModelEnabled?.Invoke(typeof(T), model);
@@ -68,7 +68,7 @@ namespace LevelBasedInputSystem.InputControllerModels
         
         public void DisableModel<T>() where T : AppModelBase
         {
-            if (_enabled.Remove(typeof(T), out var model) && model != null)
+            if ((_enabled.Remove(typeof(T), out var model) || _models.TryGetValue(typeof(T), out model)) && model != null)
             {
                 _disabled[typeof(T)] = model;
                 ModelDisabled?.Invoke(typeof(T), model);
