@@ -28,6 +28,8 @@ namespace LevelBasedInputSystem.InputsHandle.Core
             get => _enabled;
             set
             {
+                if (_enabled == value)
+                    return;
                 if (value)
                     Enable?.Invoke(this);
                 else
