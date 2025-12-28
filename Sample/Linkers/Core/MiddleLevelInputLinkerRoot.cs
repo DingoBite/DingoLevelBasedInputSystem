@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using DingoLevelBasedInputSystem.InputControllerModels;
 using DingoUnityExtensions;
 using DingoUnityExtensions.MonoBehaviours.Singletons;
 using DingoUnityExtensions.MonoBehaviours.UI.RaycastSafetyArea;
+using DingoUnityExtensions.UnityViewProviders.Core;
 using LevelBasedInputSystem.InputControllerModels;
 using LevelBasedInputSystem.InputsHandle.Core;
 using UnityEngine;
@@ -45,9 +47,7 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.Core
             _isOverSafeArea = RaycastSafetyArea.CheckOverSafetyArea();
             _isFocused = _eventSystem.isFocused && 
                          selectedGameObject != null && 
-                         selectedGameObject.TryGetComponent<Selectable>(out var selectable) && 
-                         selectable.IsInteractable() && 
-                         selectable is ISubmitHandler or ICancelHandler;
+                         IsGameObjectSelectedToInput(selectedGameObject);
             
             if (!manageInputSystemActiveness)
                 return;
@@ -55,6 +55,17 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.Core
                 _middleLevelSourceInput.Enabled = true;
             else
                 _middleLevelSourceInput.Enabled = false;
+        }
+
+        private bool IsGameObjectSelectedToInput(GameObject go)
+        {
+            var eventSystemSelected = go.TryGetComponent<Selectable>(out var selectable) && selectable.IsInteractable() && selectable is ISubmitHandler or ICancelHandler;
+            if (eventSystemSelected)
+                return true;
+            var containerSelected = go.TryGetComponent<ContainerBase>(out var containerBase) && containerBase.Selectable && containerBase.Selected;
+            if (containerSelected)
+                return true;
+            return false;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DingoLevelBasedInputSystem.InputControllerModels;
 using DingoProjectAppStructure.Core.AppRootCore;
 using DingoProjectAppStructure.Core.Model;
 using LevelBasedInputSystem.InputControllerModels;

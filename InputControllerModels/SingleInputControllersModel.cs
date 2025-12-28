@@ -1,7 +1,8 @@
 using Bind;
 using DingoProjectAppStructure.Core.Model;
+using LevelBasedInputSystem.InputControllerModels;
 
-namespace LevelBasedInputSystem.InputControllerModels
+namespace DingoLevelBasedInputSystem.InputControllerModels
 {
     public class SingleInputControllersModel : HardLinkAppModelBase
     {
