@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
 using DingoLevelBasedInputSystem.InputControllerModels;
+using DingoLevelBasedInputSystem.InputsHandle.Core;
 using DingoProjectAppStructure.Core.AppRootCore;
 using DingoProjectAppStructure.Core.Model;
-using LevelBasedInputSystem.InputControllerModels;
-using LevelBasedInputSystem.InputsHandle.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

@@ -1,4 +1,4 @@
-namespace LevelBasedInputSystem.InputControllerModels
+namespace DingoLevelBasedInputSystem.InputControllerModels
 {
     public class InputControllerProperties
     {

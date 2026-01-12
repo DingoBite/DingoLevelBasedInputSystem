@@ -1,6 +1,5 @@
 using DingoLevelBasedInputSystem.InputControllerModels;
-using LevelBasedInputSystem.InputControllerModels;
-using LevelBasedInputSystem.InputsHandle.Core;
+using DingoLevelBasedInputSystem.InputsHandle.Core;
 using UnityEngine;
 
 namespace DingoLevelBasedInputSystem.Sample.Linkers.Core

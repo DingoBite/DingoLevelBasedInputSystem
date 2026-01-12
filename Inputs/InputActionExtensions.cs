@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.InputSystem;
 
-namespace LevelBasedInputSystem.Inputs
+namespace DingoLevelBasedInputSystem.Inputs
 {
     public static class InputActionExtensions
     {

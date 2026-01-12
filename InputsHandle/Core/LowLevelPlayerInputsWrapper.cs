@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.InputSystem;
 
-namespace LevelBasedInputSystem.InputsHandle.Core
+namespace DingoLevelBasedInputSystem.InputsHandle.Core
 {
     public class LowLevelPlayerInputsWrapper : IDisposable
     {

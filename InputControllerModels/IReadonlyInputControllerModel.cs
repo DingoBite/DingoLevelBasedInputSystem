@@ -1,6 +1,6 @@
 using DingoProjectAppStructure.Core.Model;
 
-namespace LevelBasedInputSystem.InputControllerModels
+namespace DingoLevelBasedInputSystem.InputControllerModels
 {
     public interface IReadonlyInputControllerModel
     {

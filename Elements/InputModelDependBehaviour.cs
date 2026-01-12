@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DingoLevelBasedInputSystem.Sample
+namespace DingoLevelBasedInputSystem.Elements
 {
     public abstract class InputModelDependBehaviour<TInputModel> : MonoBehaviour
     {

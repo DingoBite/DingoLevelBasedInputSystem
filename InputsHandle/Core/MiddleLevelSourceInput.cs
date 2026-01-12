@@ -1,6 +1,6 @@
 using System;
 
-namespace LevelBasedInputSystem.InputsHandle.Core
+namespace DingoLevelBasedInputSystem.InputsHandle.Core
 {
     public class MiddleLevelSourceInput
     {

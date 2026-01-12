@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using DingoLevelBasedInputSystem.InputControllerModels;
+using DingoLevelBasedInputSystem.InputsHandle.Core;
 using DingoUnityExtensions;
 using DingoUnityExtensions.MonoBehaviours.Singletons;
 using DingoUnityExtensions.MonoBehaviours.UI.RaycastSafetyArea;
 using DingoUnityExtensions.UnityViewProviders.Core;
-using LevelBasedInputSystem.InputControllerModels;
-using LevelBasedInputSystem.InputsHandle.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

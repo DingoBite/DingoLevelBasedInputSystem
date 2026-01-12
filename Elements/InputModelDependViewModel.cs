@@ -3,9 +3,8 @@ using Bind;
 using DingoLevelBasedInputSystem.InputControllerModels;
 using DingoProjectAppStructure.Core.Model;
 using DingoProjectAppStructure.Core.ViewModel;
-using LevelBasedInputSystem.InputControllerModels;
 
-namespace DingoLevelBasedInputSystem.Sample
+namespace DingoLevelBasedInputSystem.Elements
 {
     public abstract class InputModelDependViewModel<T> : AppViewModelBase where T : AppModelBase
     {

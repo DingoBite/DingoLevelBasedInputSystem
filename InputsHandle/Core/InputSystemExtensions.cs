@@ -1,6 +1,6 @@
 using DingoProjectAppStructure.Core.Model;
 
-namespace LevelBasedInputSystem.InputsHandle.Core
+namespace DingoLevelBasedInputSystem.InputsHandle.Core
 {
     public static class InputSystemExtensions
     {

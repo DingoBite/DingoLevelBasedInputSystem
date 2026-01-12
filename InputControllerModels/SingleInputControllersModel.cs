@@ -1,6 +1,5 @@
 using Bind;
 using DingoProjectAppStructure.Core.Model;
-using LevelBasedInputSystem.InputControllerModels;
 
 namespace DingoLevelBasedInputSystem.InputControllerModels
 {

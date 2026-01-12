@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DingoProjectAppStructure.Core.Model;
 using UnityEngine;
 
-namespace LevelBasedInputSystem.InputControllerModels
+namespace DingoLevelBasedInputSystem.InputControllerModels
 {
     public class InputControllerModel : IReadonlyInputControllerModel
     {

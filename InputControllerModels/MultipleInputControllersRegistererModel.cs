@@ -4,7 +4,7 @@ using Bind;
 using DingoProjectAppStructure.Core.Model;
 using DingoUnityExtensions.Extensions;
 
-namespace LevelBasedInputSystem.InputControllerModels
+namespace DingoLevelBasedInputSystem.InputControllerModels
 {
     public class MultipleInputControllersRegistererModel : HardLinkAppModelBase
     {

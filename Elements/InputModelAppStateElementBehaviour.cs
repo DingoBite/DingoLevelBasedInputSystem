@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 using DingoLevelBasedInputSystem.InputControllerModels;
 using DingoProjectAppStructure.Core.AppRootCore;
 using DingoProjectAppStructure.Core.Model;
-using LevelBasedInputSystem.InputControllerModels;
 
-namespace DingoLevelBasedInputSystem.Sample
+namespace DingoLevelBasedInputSystem.Elements
 {
     public abstract class InputModelAppStateElementBehaviour<T> : AppStateElementBehaviour where T : AppModelBase
     {

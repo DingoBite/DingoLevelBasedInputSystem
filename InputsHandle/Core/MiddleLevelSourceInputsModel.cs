@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Bind;
 using DingoProjectAppStructure.Core.Model;
 
-namespace LevelBasedInputSystem.InputsHandle.Core
+namespace DingoLevelBasedInputSystem.InputsHandle.Core
 {
     public class MiddleLevelSourceInputsModel : HardLinkAppModelBase
     {
