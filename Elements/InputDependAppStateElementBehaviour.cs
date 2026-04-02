@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using DingoLevelBasedInputSystem.InputControllerModels;
 using DingoProjectAppStructure.Core.AppRootCore;
@@ -6,18 +6,20 @@ using DingoProjectAppStructure.Core.Model;
 
 namespace DingoLevelBasedInputSystem.Elements
 {
-    public abstract class InputModelAppStateElementBehaviour<T> : AppStateElementBehaviour where T : AppModelBase
+    public abstract class InputDependAppStateElementBehaviour<T> : AppStateElementBehaviour where T : AppModelBase
     {
         private AppModelRoot _appModel;
-        
+        private SingleInputControllers _inputControllers;
+
         protected T InputModel { get; private set; }
 
         public override Task BindAsync(AppModelRoot appModel)
         {
             _appModel = appModel;
+            _inputControllers = appModel.ExternalDependencies.Get<SingleInputControllers>();
             return base.BindAsync(appModel);
         }
-        
+
         protected abstract void EnableModel(T model);
         protected abstract void DisableModel(T model);
 
@@ -39,7 +41,7 @@ namespace DingoLevelBasedInputSystem.Elements
             }
         }
 
-        protected override void SubscribeOnly() => _appModel.Get<SingleInputControllersModel>().InputControllerModel.V.SubscribeAndSet<T>(EnableController, DisableController);
-        protected override void UnsubscribeOnly() => _appModel.Get<SingleInputControllersModel>().InputControllerModel.V.UnSubscribe(EnableController, DisableController);
+        protected override void SubscribeOnly() => _inputControllers?.InputControllerModel.V?.SubscribeAndSet<T>(EnableController, DisableController);
+        protected override void UnsubscribeOnly() => _inputControllers?.InputControllerModel.V?.UnSubscribe(EnableController, DisableController);
     }
 }

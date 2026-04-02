@@ -13,10 +13,10 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.MiddleLevel
         private float _leftClickTime = -1;
         
         private static readonly SampleInputProviderModel BlankProviderModel = new();
-        private SingleInputControllersModel _inputControllersModel;
+        private SingleInputControllers _inputControllersModel;
         private SampleInputProviderModel M => _inputControllersModel?.InputControllerModel.V?.Model<SampleInputProviderModel>() ?? BlankProviderModel;
 
-        public override void Link(SingleInputControllersModel inputControllersModel, MiddleLevelSourceInput middleLevelSourceInput)
+        public override void Link(SingleInputControllers inputControllersModel, MiddleLevelSourceInput middleLevelSourceInput)
         {
             _inputControllersModel = inputControllersModel;
             var lowLevelPlayerInputsWrapper = middleLevelSourceInput.LowLevelPlayerInputsWrapper;

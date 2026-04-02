@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DingoLevelBasedInputSystem.Elements
 {
-    public abstract class InputModelDependBehaviour<TInputModel> : MonoBehaviour
+    public abstract class InputDependBehaviour<TInputModel> : MonoBehaviour
     {
         [SerializeField] private bool _manageActiveness;
         

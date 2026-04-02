@@ -6,13 +6,13 @@ using DingoUnityExtensions.Extensions;
 
 namespace DingoLevelBasedInputSystem.InputControllerModels
 {
-    public class MultipleInputControllersRegistererModel : HardLinkAppModelBase
+    public class MultipleInputControllers
     {
-        private readonly Dictionary<string, InputControllerModel> _inputControllerModels = new ();
+        private readonly Dictionary<string, InputControllerModel> _inputControllerModels = new();
         private readonly Bind<Dictionary<string, IReadonlyInputControllerModel>> _readOnlyControllers = new(new Dictionary<string, IReadonlyInputControllerModel>());
 
         public IReadonlyBind<IReadOnlyDictionary<string, IReadonlyInputControllerModel>> Controllers => _readOnlyControllers;
-        
+
         public bool TryGetInputControllerModel(string sourceId, out IReadonlyInputControllerModel inputControllerModel)
         {
             inputControllerModel = _inputControllerModels.GetValueOrDefault(sourceId);
@@ -34,10 +34,10 @@ namespace DingoLevelBasedInputSystem.InputControllerModels
             inputControllerModel.DisableModel<T>();
             UpdateControllers();
         }
-        
+
         public void EnableModels<T>() where T : AppModelBase
         {
-            foreach (var (key, inputControllerModel) in _inputControllerModels)
+            foreach (var (_, inputControllerModel) in _inputControllerModels)
             {
                 inputControllerModel.EnableModel<T>();
             }
@@ -46,16 +46,19 @@ namespace DingoLevelBasedInputSystem.InputControllerModels
 
         public void DisableModels<T>() where T : AppModelBase
         {
-            foreach (var (key, inputControllerModel) in _inputControllerModels)
+            foreach (var (_, inputControllerModel) in _inputControllerModels)
             {
                 inputControllerModel.DisableModel<T>();
             }
             UpdateControllers();
         }
-        
+
         public void RegisterSource(InputControllerModel inputControllerModel)
         {
-            _inputControllerModels.Add(inputControllerModel.SourceId, inputControllerModel);
+            if (inputControllerModel == null)
+                return;
+
+            _inputControllerModels[inputControllerModel.SourceId] = inputControllerModel;
             UpdateControllers();
         }
 

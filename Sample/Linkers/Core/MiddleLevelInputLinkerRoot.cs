@@ -20,7 +20,7 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.Core
         private bool _isFocused;
         private bool _isOverSafeArea;
 
-        public MiddleLevelSourceInput LinkFunction(SingleInputControllersModel inputControllersModel, LowLevelPlayerInputsWrapper lowLevelPlayerInputsWrapper)
+        public MiddleLevelSourceInput LinkFunction(SingleInputControllers inputControllersModel, LowLevelPlayerInputsWrapper lowLevelPlayerInputsWrapper)
         {
             _middleLevelSourceInput = new MiddleLevelSourceInput(lowLevelPlayerInputsWrapper);
 
