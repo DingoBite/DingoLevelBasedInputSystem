@@ -12,7 +12,7 @@ namespace DingoLevelBasedInputSystem.Sample
     {
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private bool _autoEnableOnInit;
-    
+
         private AppModelRoot _appModelRoot;
         private string _id;
 
@@ -27,8 +27,8 @@ namespace DingoLevelBasedInputSystem.Sample
             InitializeInput();
             return base.PostInitializeAsync();
         }
-        
-private void InitializeInput()
+
+        private void InitializeInput()
         {
             _id = _appModelRoot.Get<LowLevelPlayersInputsModel>().AddPlayer(_playerInput);
             if (_autoEnableOnInit)
@@ -41,9 +41,11 @@ private void InitializeInput()
             multipleInputControllersRegistererModel?.UnregisterSource(_id);
             multipleInputControllersRegistererModel?.RegisterSource(inputControllerModel);
             inputControllerModel.RegisterModel(new SampleInputProviderModel());
+            if (_autoEnableOnInit)
+                inputControllerModel.EnableModel<SampleInputProviderModel>();
         }
 
-private void OnDestroy()
+        private void OnDestroy()
         {
             if (_appModelRoot == null || string.IsNullOrEmpty(_id))
                 return;
@@ -52,6 +54,5 @@ private void OnDestroy()
             externalDependencies.Get<MultipleInputControllers>()?.UnregisterSource(_id);
             externalDependencies.Get<SingleInputControllers>()?.ClearInputControllerModel(_id);
         }
-
     }
 }
