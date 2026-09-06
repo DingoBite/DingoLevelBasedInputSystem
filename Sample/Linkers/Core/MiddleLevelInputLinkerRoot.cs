@@ -19,6 +19,16 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.Core
         private MiddleLevelSourceInput _middleLevelSourceInput;
         private bool _isFocused;
         private bool _isOverSafeArea;
+        private readonly HashSet<object> _uiFocusOwners = new();
+
+        // UI systems without an EventSystem Selectable (for example UI Toolkit)
+        // participate in the same middle-level gate as uGUI input fields.
+        public void SetUiFocus(object owner, bool focused)
+        {
+            if (focused) { _uiFocusOwners.Add(owner); }
+            else { _uiFocusOwners.Remove(owner); }
+            UpdateCheckEventSystem(true);
+        }
 
         public MiddleLevelSourceInput LinkFunction(SingleInputControllers inputControllersModel, LowLevelPlayerInputsWrapper lowLevelPlayerInputsWrapper)
         {
@@ -44,11 +54,11 @@ namespace DingoLevelBasedInputSystem.Sample.Linkers.Core
         {
             var selectedGameObject = _eventSystem.currentSelectedGameObject;
             _isOverSafeArea = RaycastSafetyArea.CheckOverSafetyArea();
-            _isFocused = _eventSystem.isFocused && 
+            _isFocused = _uiFocusOwners.Count > 0 || _eventSystem.isFocused &&
                          selectedGameObject != null && 
                          IsGameObjectSelectedToInput(selectedGameObject);
             
-            if (!manageInputSystemActiveness)
+            if (!manageInputSystemActiveness || _middleLevelSourceInput == null)
                 return;
             if (!_isFocused)
                 _middleLevelSourceInput.Enabled = true;
